@@ -85,7 +85,7 @@ p {
 /* ===== Content ===== */
 .hero {
   height: 100vh; /* Full viewport height */
-  background-image: url('/assets/images/fish.jpg'); /* Add your hero image */
+  background-image: url('../assets/images/fish.jpg'); /* Add your hero image */
   background-size: cover; /* Cover the entire section */
   background-position: center; /* Center the image */
   display: flex;
@@ -130,7 +130,7 @@ p {
   display: inline-block; /* Make the <a> tag behave like a block */
   width: 100px; /* Adjust to match your image size */
   height: 80px; /* Adjust to match your image size */
-  background-image: url('/assets/icons/folder.png'); /* Closed folder image */
+  background-image: url('../assets/icons/folder.png'); /* Closed folder image */
   background-size: cover; /* Ensure the image covers the container */
   background-position: center; /* Center the image */
   cursor: pointer;
