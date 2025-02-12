@@ -1,56 +1,88 @@
+/* ===== Fonts ===== */
+@font-face {
+  font-family: 'VT323';
+  src: url("../assets/fonts/VT323-Regular.woff2") format('woff2');
+  font-weight: 100 1000;
+}
 
-/* Reset */
+
+/* ===== :root Variables ===== */
+:root {
+  /* Colors */
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #f4f4f4;
+  --text-color: #333;
+  --text-light: #fff;
+
+  /* Typography */
+  --font-family: 'VT323', sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Spacing */
+  --spacing-unit: 1rem; /* 16px by default */
+  --max-width: 1200px;
+
+  /* Borders */
+  --border-radius: 8px;
+  --border-color: #ddd;
+}
+
+/* ===== Global Reset ===== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  :root {
-  --primary: #007bff; /* Blue accent color */
-  --secondary: #6c757d; /* Gray for text */
-  --background: #f0f0f0; /* Light gray background */
-  --font-primary: 'Roboto', sans-serif; 
+html {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
 
-  --container-max-width: 960px; 
-  --spacing-unit: 1rem; 
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
 
-  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
-  --border-radius: 5px; 
+/* ===== Reusable Container ===== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-unit);
+}
 
-  --transition-duration: 0.3s;
-  --transition-timing-function: ease-in-out; 
-  }
-  
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #181818; /* Dark background */
-    color: #fff;
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-  }
-  
-  
-  /* Container */
-  .container {
-    max-width: 960px;
-    width: 90%; 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-  }
-  
-  /* Header */
-  header {
-    text-align: center; 
-  }
-  
-  /* ===== Hero Section ===== */
+/* ===== Basic Typography ===== */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: var(--spacing-unit);
+  line-height: 1.2;
+}
+
+h1 {
+  font-family: var(--font-family);
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-family: var(--font-family);
+  font-size: 2rem;
+}
+
+h3 {
+  font-family: var(--font-family);
+  font-size: 1.75rem;
+}
+
+p {
+  font-family: var(--font-family);
+  margin-bottom: var(--spacing-unit);
+}
+
+
+/* ===== Content ===== */
 .hero {
   height: 100vh; /* Full viewport height */
   background-image: url('/assets/images/fish.jpg'); /* Add your hero image */
@@ -61,49 +93,58 @@
   align-items: center;
   text-align: center;
   color: var(--text-light);
+  font-family: var(--font-family);
 }
 
 
 .hero-content h1 {
-  font-size: 3rem;
+  font-size: 4.5rem;
   margin-bottom: var(--spacing-unit);
+  font-family: var(--font-family);
 }
 
 .hero-content p {
-  font-size: 1.5rem;
+  font-size: 3rem;
   margin-bottom: calc(var(--spacing-unit) * 2);
+  font-family: var(--font-family);
 }
 
 
-/* About Section */
-#about {
-  margin-top: 5rem; 
+/* Folders */
+
+.folders {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* Space between folders */
 }
 
-.about-content {
-  text-align: center; 
+.folders {
+  text-decoration: none;
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Projects Section */
-#projects {
-  margin-top: 5rem; 
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 2rem;
-}
-
-/* Footer */
-footer {
-  margin-top: 5rem; 
+.folder {
+  display: inline-block; /* Make the <a> tag behave like a block */
+  width: 100px; /* Adjust to match your image size */
+  height: 80px; /* Adjust to match your image size */
+  background-image: url('/assets/icons/folder.png'); /* Closed folder image */
+  background-size: cover; /* Ensure the image covers the container */
+  background-position: center; /* Center the image */
+  cursor: pointer;
+  text-decoration: none; /* Remove underline from link */
+  color: white; /* Text color */
+  font-size: 14px;
+  font-weight: bold;
   text-align: center;
+  line-height: 80px; /* Vertically center the text */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add shadow for better readability */
+  transition: background-image 0.3s ease;
 }
 
-/* Media Query (for smaller screens) */
-@media (max-width: 768px) {
-  #hero {
-    min-height: 50vh; /* Reduce hero section height on smaller screens */
-  }
+/* Hover Effect: Change to Open Folder */
+.folder:hover {
+  background-image: url('/assets/icons/folder_open.png'); /* Open folder image */
 }
