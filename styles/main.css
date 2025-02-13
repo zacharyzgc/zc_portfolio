@@ -403,6 +403,19 @@ p {
   height: calc(0.3 * var(--main-width));
 }
 
+.resume_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  justify-self: flex-end;
+  background-image: url("/assets/images/windows_notepad.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 5rem;
+  width: calc(0.3 * var(--main-width));
+  height: calc(0.3 * var(--main-width));
+}
 
 /* ===== Projects ===== */
 #projects {
