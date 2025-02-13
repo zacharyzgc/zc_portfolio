@@ -3,7 +3,6 @@ AppVersion=5.10
 Version=350
 
 [General]
-Rank=0
 ColorLabel=0
 InTrash=false
 
@@ -124,10 +123,10 @@ ClCurve=0;
 
 [Sharpening]
 Enabled=false
-Contrast=200
-Method=rld
-Radius=1.5900000000000001
-BlurRadius=2
+Contrast=20
+Method=usm
+Radius=0.5
+BlurRadius=0.20000000000000001
 Amount=200
 Threshold=20;80;2000;1200;
 OnlyEdges=false
@@ -135,10 +134,10 @@ EdgedetectionRadius=1.8999999999999999
 EdgeTolerance=1800
 HalocontrolEnabled=false
 HalocontrolAmount=85
-DeconvRadius=2.5
+DeconvRadius=0.75
 DeconvAmount=100
-DeconvDamping=100
-DeconvIterations=100
+DeconvDamping=0
+DeconvIterations=30
 
 [Vibrance]
 Enabled=false
@@ -231,13 +230,13 @@ Threshold=50
 
 [Defringing]
 Enabled=false
-Radius=5
-Threshold=47
+Radius=2
+Threshold=13
 HueCurve=1;0.16666666699999999;0;0.34999999999999998;0.34999999999999998;0.34699999999999998;0;0.34999999999999998;0.34999999999999998;0.51366742600000004;0;0.34999999999999998;0.34999999999999998;0.66894457100000004;0;0.34999999999999998;0.34999999999999998;0.82877752459999998;0.97835991;0.34999999999999998;0.34999999999999998;0.99088838270000001;0;0.34999999999999998;0.34999999999999998;
 
 [Dehaze]
 Enabled=false
-Strength=0
+Strength=50
 ShowDepthMap=false
 Depth=25
 Saturation=50
@@ -253,17 +252,17 @@ Method=Lab
 LMethod=SLI
 CMethod=MAN
 C2Method=AUTO
-SMethod=shalbi
-MedMethod=99
+SMethod=shal
+MedMethod=soft
 RGBMethod=soft
 MethodMed=Lonly
 Redchro=0
 Bluechro=0
 AutoGain=true
-Gamma=1.97
-Passes=2
+Gamma=1.7
+Passes=1
 LCurve=1;0.050000000000000003;0.14999999999999999;0.34999999999999998;0.34999999999999998;0.55000000000000004;0.040000000000000001;0.34999999999999998;0.34999999999999998;
-CCCurve=1;0.050000000000000003;0.5;0.34999999999999998;0.34999999999999998;0.5523346303501937;0.23287937743190651;0.34999999999999998;0.34999999999999998;
+CCCurve=1;0.050000000000000003;0.5;0.34999999999999998;0.34999999999999998;0.34999999999999998;0.050000000000000003;0.34999999999999998;0.34999999999999998;
 
 [EPD]
 Enabled=false
@@ -299,14 +298,14 @@ Regularization=0
 Pivot=0
 
 [Crop]
-Enabled=false
-X=0
+Enabled=true
+X=881
 Y=0
-W=6008
-H=4008
+W=1556
+H=2075
 FixedRatio=true
-Ratio=As Image
-Orientation=As Image
+Ratio=4:3
+Orientation=Portrait
 Guide=Frame
 
 [Coarse Transformation]
@@ -339,7 +338,7 @@ Method=simple
 Horizontal=0
 Vertical=0
 CameraCropFactor=0
-CameraFocalLength=16
+CameraFocalLength=0
 CameraPitch=0
 CameraRoll=0
 CameraShiftHorizontal=0
@@ -384,7 +383,7 @@ CenterY=0
 
 [Resize]
 Enabled=false
-Scale=0.14999999999999999
+Scale=0.42999999999999999
 AppliesTo=Cropped area
 Method=Lanczos
 DataSpecified=3
@@ -616,12 +615,12 @@ Enabled=false
 Enabled=false
 Gamutlab=false
 cbdlMethod=bef
-Mult0=0
-Mult1=0
-Mult2=0
-Mult3=0
-Mult4=0
-Mult5=4
+Mult0=1
+Mult1=1
+Mult2=1
+Mult3=1
+Mult4=1
+Mult5=1
 Threshold=0.20000000000000001
 Skinprotect=0
 Hueskin=-5;25;170;120;

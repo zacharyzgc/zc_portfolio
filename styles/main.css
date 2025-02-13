@@ -5,6 +5,12 @@
   font-weight: 100 1000;
 }
 
+@font-face {
+  font-family: 'w95fa';
+  src: url("../assets/fonts/w95fa.woff2") format('woff2');
+  font-weight: 100 1000;
+}
+
 
 /* ===== :root Variables ===== */
 :root {
@@ -22,11 +28,14 @@
 
   /* Spacing */
   --spacing-unit: 1rem; /* 16px by default */
-  --max-width: 1200px;
+  --main-width: 100vw;
+  --main-height: 100vh;
 
   /* Borders */
   --border-radius: 8px;
   --border-color: #ddd;
+
+  --icons-count: 3;
 }
 
 /* ===== Global Reset ===== */
@@ -39,31 +48,38 @@
 html {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-family);
   color: var(--text-color);
   background-color: var(--background-color);
+  cursor: url("../assets/cursor/arrow.cur"), default;
 }
 
-/* ===== Reusable Container ===== */
-.container {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-unit);
+
+.icon:hover {
+  cursor: url("../assets/cursor/Cursor_15.cur"), pointer;
 }
+
+p:hover{
+  cursor: url("../assets/cursor/text.cur"), text;
+}
+h1:hover {
+  cursor: url("../assets/cursor/text.cur"), text;
+}
+
 
 /* ===== Basic Typography ===== */
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: var(--spacing-unit);
   line-height: 1.2;
+  color: var(--text-light);
 }
 
 h1 {
   font-family: var(--font-family);
-  font-size: 2.5rem;
+  font-size: 7rem;
 }
 
 h2 {
@@ -77,74 +93,386 @@ h3 {
 }
 
 p {
-  font-family: var(--font-family);
-  margin-bottom: var(--spacing-unit);
-}
-
-
-/* ===== Content ===== */
-.hero {
-  height: 100vh; /* Full viewport height */
-  background-image: url('../assets/images/fish.jpg'); /* Add your hero image */
-  background-size: cover; /* Cover the entire section */
-  background-position: center; /* Center the image */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   color: var(--text-light);
   font-family: var(--font-family);
+  font-size: 1rem;
 }
 
 
-.hero-content h1 {
-  font-size: 4.5rem;
-  margin-bottom: var(--spacing-unit);
-  font-family: var(--font-family);
+
+
+/* ===== Main Page ===== */
+#home {
+  min-height: var(--main-height);
+  position: relative;
+  background-image: url('../assets/images/fish.jpg'); 
+  background-size: cover;
+  background-position: center;
 }
 
-.hero-content p {
-  font-size: 3rem;
-  margin-bottom: calc(var(--spacing-unit) * 2);
-  font-family: var(--font-family);
-}
 
-
-/* Folders */
-
-.folders {
-  display: flex;
-  justify-content: center;
-  gap: 2rem; /* Space between folders */
-}
-
-.folders {
-  text-decoration: none;
-  color: var(--text-light);
+.home-content {
+  min-height: var(--main-height); /* Full viewport height */
   display: flex;
   flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  
+  text-align: left;
+  backdrop-filter: blur(12px);
+  
+  font-family: var(--font-family);
+  padding-top: calc(0.05 * var(--main-height));
+  padding-bottom: calc(0.05 * var(--main-height));
+  padding-left: calc(0.05 * var(--main-width));
+  padding-right: calc(0.05 * var(--main-width));
+}
+
+.home-content h1 {
+  font-size: 7rem;
+  margin-top: calc(0.12 * var(--main-height));
+}
+
+.home-content p {
+  font-size: 3rem;
+  
+}
+
+
+@media (max-width: 768px) {
+  .home-content {
+    min-height: var(--main-height); /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: calc(0.02 * var(--main-height));
+  }
+
+  .home-content h1 {
+    font-size: 2rem;
+    margin-top: calc(0.2 * var(--main-height));
+  }
+  
+  .home-content p {
+    font-size: 1rem;
+  }
+
+}
+
+
+
+/* Icons */
+.icon {
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  position: relative;
+
+  flex: 1 1 auto;
+  cursor: pointer;
+
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.icon p{
+  position: absolute;
+  bottom: 0;
+  font-size: 1.3rem;
+  font-family: var(--font-family);
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add shadow for better readability */
+  text-decoration: none; /* Remove underline from link */
+  color: white; /* Text color */
+  line-height: 0.6;
+}
+
+/* Folders */
+.folders-container {
+  position: fixed;
+  top: calc(0.02 * var(--main-height));
+  right: 0;
+  padding-left: calc(0.02 * var(--main-width));
+  padding-right: calc(0.02 * var(--main-width));
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center; 
+  gap: calc(0.03 * var(--main-width));
+  font-family: var(--font-family);
+  width: calc(0.25 * var(--main-width));
+  margin-right: calc(0.01 * var(--main-width));
+  z-index: 50;
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Hide the navbar when scrolling down */
+.hidden {
+  transform: translateY(-200%);
 }
 
 .folder {
-  display: inline-block; /* Make the <a> tag behave like a block */
-  width: 100px; /* Adjust to match your image size */
-  height: 80px; /* Adjust to match your image size */
-  background-image: url('../assets/icons/folder.png'); /* Closed folder image */
-  background-size: cover; /* Ensure the image covers the container */
-  background-position: center; /* Center the image */
-  cursor: pointer;
-  text-decoration: none; /* Remove underline from link */
-  color: white; /* Text color */
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 80px; /* Vertically center the text */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add shadow for better readability */
-  transition: background-image 0.3s ease;
+  aspect-ratio: 1/1.2;  
+  background-image: url("../assets/icons/folder_closed.png");
 }
 
-/* Hover Effect: Change to Open Folder */
 .folder:hover {
-  background-image: url('/assets/icons/folder_open.png'); /* Open folder image */
+  background-image: url('../assets/icons/folder_open.png');
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.home {
+  aspect-ratio: 1/1.4;  
+  background-image: url("../assets/icons/rat.png");
+  /* justify-self: flex-start;
+  margin-right: calc(0.7 * var(--main-width)); */
+}
+
+@media (max-width: 768px) {
+  .folders-container{
+    width: calc(0.7 * var(--main-width));
+    gap: calc(0.05 * var(--main-width));
+  }
+  
+  .icon p{
+    font-size: 0.8rem;
+  }
+}
+
+/* Top Icons */
+
+.top_icons_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+  align-content: center;
+  align-self: flex-start;
+  gap: calc(0.05 * var(--main-width));
+  font-size: 1rem;
+
+  width: calc(7rem * var(--icons-count));
+
+  margin-top: calc(0.1 * var(--main-height));;
+
+}
+
+.resume {
+  aspect-ratio: 1/1.5;
+  background-image: url("../assets/icons/notepad.png");
+  font-size: 1rem;
+}
+
+.linkedin {
+  aspect-ratio: 1/1.5;
+  background-image: url("../assets/icons/linkedin.png");
+  font-size: 1rem;
+}
+
+.github {
+  aspect-ratio: 1/1.5;
+  background-image: url("../assets/icons/github.png");
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+
+  .top_icons_container{
+    width: calc(0.4 * var(--main-width));
+    gap: calc(0.05 * var(--main-width));
+    align-self: flex-end;
+    margin-bottom: calc(0.2 * var(--main-width));;
+  }
+  
+}
+
+
+
+
+
+
+/* ===== About ===== */
+#about {
+  min-height: var(--main-height);
+  position: relative;
+  background-image: linear-gradient(
+    to top, 
+    rgba(3, 3, 17, 0.651), 
+    rgba(10, 28, 72, 0.541)
+), url('../assets/images/fish.jpg');
+  background-size: cover;
+  background-position: center;
+
+}
+
+.about-content {
+  min-height: var(--main-height); /* Full viewport height */
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: flex-start;
+  gap: calc(0.05 * var(--main-width));
+
+  text-align: left;
+  color: var(--text-light);
+  backdrop-filter: blur(20px);
+  
+  font-family: var(--font-family);
+  padding-top: calc(0.05 * var(--main-height));
+  padding-bottom: calc(0.05 * var(--main-height));
+  padding-left: calc(0.1 * var(--main-height));
+  padding-right: calc(0.05 * var(--main-height));
+}
+
+.about-content h1{
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #000000;
+}
+
+.about-content h3{
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #000000;
+}
+
+.about-content h2{
+  font-family: 'Times New Roman', Times, serif;
+  font-style: normal;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: #000000;
+}
+
+.about-content p{
+  font-family: 'Times New Roman', Times, serif;
+  font-style: normal;
+  font-size: 1rem;
+  color: #000000;
+  line-height: 100%;
+}
+
+.polaroid {
+  display: flex;
+  background-color: #f4f4f4;
+  align-items: center;
+  flex-direction: column;
+  align-self: flex-start;
+  width: calc(0.16 * var(--main-width));
+  height: calc(0.5 * var(--main-height));
+  margin-top: calc(0.1 * var(--main-height));;
+}
+
+.portrait {
+  height: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10%;
+  margin-bottom: 5%;
+}
+
+.polaroid_caption {
+  display: block;
+  height: 3rem;
+  padding-left: 10%;
+  padding-right: 10%;
+  
+}
+
+.about_text {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  text-align: left;
+  background-image: url("/assets/images/windows_notepad.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 3rem;
+  padding-left: 1rem;
+  padding-right: 1.3rem;
+  width: calc(0.41 * var(--main-width));
+  height: calc(0.3 * var(--main-width));
+}
+
+
+/* ===== Projects ===== */
+#projects {
+  min-height: var(--main-height);
+  position: relative;
+  background-image: linear-gradient(
+    to top, 
+    rgba(3, 3, 17, 0.822), 
+    rgba(3, 3, 17, 0.651)
+), url('../assets/images/fish.jpg');
+  background-size: cover;
+  background-position: center;
+
+}
+
+
+.projects-content {
+  min-height: var(--main-height); /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  
+  text-align: left;
+  color: var(--text-light);
+  backdrop-filter: blur(20px);
+  
+  font-family: var(--font-family);
+  padding-top: calc(0.05 * var(--main-height));
+  padding-bottom: calc(0.05 * var(--main-height));
+  padding-left: calc(0.1 * var(--main-height));
+  padding-right: calc(0.05 * var(--main-height));
+}
+
+
+.projects-content h1{
+  font-size: 3rem;
+  text-decoration: underline;
+  color: #f4f4f4;
+}
+
+.projects-content h2{
+  font-size: 3rem;
+  text-decoration: underline;
+  color: #000000;
+}
+
+.projects-content p{
+  font-size: 1.5rem;
+  color: #000000;
+  line-height: 80%;
+}
+
+
+
+/* ===== Other ===== */
+#other {
+  min-height: var(--main-height);
+  position: relative;
+  background-image: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 0.918), 
+    rgba(3, 3, 17, 0.822)
+), url('../assets/images/fish.jpg');
+  background-size: cover;
+  background-position: center;
+
+}
+
+.other-content {
+  min-height: var(--main-height);
+  backdrop-filter: blur(20px);
 }
