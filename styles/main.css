@@ -396,7 +396,7 @@ p {
   background-image: url("/assets/images/windows_notepad.png");
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 3rem;
+  padding-top: 5rem;
   padding-left: 1rem;
   padding-right: 1.3rem;
   width: calc(0.41 * var(--main-width));
