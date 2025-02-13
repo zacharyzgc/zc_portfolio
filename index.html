@@ -11,71 +11,50 @@
 </head>
 
 
-<!-- scripts -->
-<!-- <script src="/scripts/script.js" type="text/javascript" defer></script>  -->
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BWPNT4CBSX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BWPNT4CBSX');
-</script>
-
 
 <!-- body -->
 <body>
 
-    <!-- nav bar -->
-    <!-- <nav id="navbar">
-        <a href="project_1.html">Projects</a>
-        <a href="project_1.html">Projects</a>
-        <a href="project_1.html">Projects</a>
-        
-    </nav> -->
     
-    <div class="folders-container">
+    
+    <!-- nav bar -->
+    <div id="nav_container">
 
-        <a href="#home" class="icon home">     
-            <p>HOME</p>
+        <a href="#home" class="icon nav_home">     
+            <div class="icon_text">HOME</div>
         </a>
 
         <a href="#projects" class="icon folder">     
-            <p>PROJECTS</p>
+            <div class="icon_text">PROJECTS</div>
         </a>
 
         <a href="#other" class="icon folder">     
-            <p>OTHER</p>
+            <div class="icon_text">OTHER</div>
         </a>
 
         <a href="#about" class="icon folder">     
-            <p>ABOUT</p>
+            <div class="icon_text">ABOUT</div>
         </a>
-        
         
     </div>
 
-    <!-- hero page -->
-    <section id="home">
-
+    <!-- home screen -->
+    <section id="home" class="snap-section">
         <div class="home-content">
-
             <h1>ZACHARY CHEN</h1>
-            <p>a digital design engineer.</p>
+            <h2>a digital design engineer.</h2>
 
-            <div class="top_icons_container">
-                <a href="files/ZacharyChen.pdf" download="ZacharyChen.pdf" class="icon resume" target=”_blank”>     
-                    <p>RESUME</p>
+            <div class="home_icons">
+                <a href="files/ZacharyChen.pdf" download="ZacharyChen.pdf" id="resume" class="icon" target=”_blank”>     
+                    <div class="icon_text">RESUME</div>
                 </a>
 
-                <a href="https://www.linkedin.com/in/zacharyzgc/" class="icon linkedin" target=”_blank”>     
-                    <p>LINKEDIN</p>
+                <a href="https://www.linkedin.com/in/zacharyzgc/" id="linkedin" class="icon" target=”_blank”>     
+                    <div class="icon_text">LINKEDIN</div>
                 </a>
 
-                <a href="https://github.com/zacharyzgc" class="icon github" target=”_blank”>     
-                    <p>GITHUB</p>
+                <a href="https://github.com/zacharyzgc" id="github" class="icon" target=”_blank”>     
+                    <div class="icon_text">GITHUB</div>
                 </a>
 
             </div>
@@ -88,22 +67,47 @@
 
     
 
-
-    <section id="projects">
+    <!-- projects screen -->
+    <section id="projects" class="snap-section">
         <div class="projects-content">
             <h1>PROJECTS</h1>
+
+            <div id ="UVM_RISCV" class="icon" onclick="toggleWindow()">
+                <div class="icon_text">UVM_RISCV</div>
+            </div>
+
+            <!-- uvm window -->
+            <div id="uvm_window" class="window">
+                <div class="window-header">
+                    <img src="assets/icons/folder_closed.png" height = 15px>
+                    <span>Resizable Window</span>
+                    <button onclick="toggleWindow()"></button>
+                </div>
+                <div class="window-content">
+                    <p>This is a resizable window. You can drag the bottom-right corner to resize it.</p>
+                </div>
+            </div>
 
         </div>
     </section>
 
 
-    <section id="other">
+
+
+    <!-- others screen -->
+    <section id="other" class="snap-section">
         <div class="other-content">
 
         </div>
     </section>
 
-    <section id="about">
+
+
+
+
+
+    <!-- about screen -->
+    <section id="about" class="snap-section">
 
         <div class="about-content">
             <div class="polaroid"> 
@@ -128,5 +132,19 @@
     </section>
     
 
+
+
+    <!-- scripts -->
+    <script src="/scripts/script.js" type="text/javascript" defer></script> 
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BWPNT4CBSX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-BWPNT4CBSX');
+    </script>
 </body>
 </html>

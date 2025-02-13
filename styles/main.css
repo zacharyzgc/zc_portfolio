@@ -49,6 +49,8 @@ html {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   scroll-behavior: smooth;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -56,6 +58,12 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   cursor: url("../assets/cursor/arrow.cur"), default;
+
+  
+}
+
+.snap-section{
+  scroll-snap-align: start;
 }
 
 
@@ -75,6 +83,7 @@ h1:hover {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   color: var(--text-light);
+  overflow-wrap: break-word;
 }
 
 h1 {
@@ -84,12 +93,12 @@ h1 {
 
 h2 {
   font-family: var(--font-family);
-  font-size: 2rem;
+  font-size: 4rem;
 }
 
 h3 {
   font-family: var(--font-family);
-  font-size: 1.75rem;
+  font-size: 2rem;
 }
 
 p {
@@ -101,69 +110,7 @@ p {
 
 
 
-/* ===== Main Page ===== */
-#home {
-  min-height: var(--main-height);
-  position: relative;
-  background-image: url('../assets/images/fish.jpg'); 
-  background-size: cover;
-  background-position: center;
-}
-
-
-.home-content {
-  min-height: var(--main-height); /* Full viewport height */
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: flex-start;
-  
-  text-align: left;
-  backdrop-filter: blur(12px);
-  
-  font-family: var(--font-family);
-  padding-top: calc(0.05 * var(--main-height));
-  padding-bottom: calc(0.05 * var(--main-height));
-  padding-left: calc(0.05 * var(--main-width));
-  padding-right: calc(0.05 * var(--main-width));
-}
-
-.home-content h1 {
-  font-size: 7rem;
-  margin-top: calc(0.12 * var(--main-height));
-}
-
-.home-content p {
-  font-size: 3rem;
-  
-}
-
-
-@media (max-width: 768px) {
-  .home-content {
-    min-height: var(--main-height); /* Full viewport height */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    padding: calc(0.02 * var(--main-height));
-  }
-
-  .home-content h1 {
-    font-size: 2rem;
-    margin-top: calc(0.2 * var(--main-height));
-  }
-  
-  .home-content p {
-    font-size: 1rem;
-  }
-
-}
-
-
-
-/* Icons */
+/* ===== Icons Base ===== */
 .icon {
   display: flex; /* Use flexbox for alignment */
   flex-direction: column; /* Stack items vertically */
@@ -171,7 +118,8 @@ p {
   justify-content: center; /* Center items vertically */
   position: relative;
 
-  flex: 1 1 auto;
+  width: 5rem;
+  /* flex: 1 1 auto; */
   cursor: pointer;
 
   background-position: top;
@@ -179,21 +127,93 @@ p {
   background-repeat: no-repeat;
 }
 
-.icon p{
+.icon_text{
   position: absolute;
   bottom: 0;
   font-size: 1.3rem;
   font-family: var(--font-family);
-  font-weight: bold;
   text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add shadow for better readability */
-  text-decoration: none; /* Remove underline from link */
-  color: white; /* Text color */
+  text-decoration: none; 
+  color: white; 
   line-height: 0.6;
 }
 
-/* Folders */
-.folders-container {
+
+/* ===== Windows Base ===== */
+
+.window {
+  display: none;
+  position:fixed;
+  top: 1rem;
+  left: calc(0.2 * var(--main-width));
+  width: calc(0.5 * var(--main-width));
+  height: calc(0.95 * var(--main-height));
+  background-color: #C0C0C0;
+  resize: both;
+  overflow: hidden;
+
+  box-shadow:
+        inset -1px -1px 0 #fff, /* Top and left inner highlight */
+        inset 1px 1px 0 #808080, /* Bottom and right inner shadow */
+        -2px -2px 0 #dfdfdf, /* Top and left outer highlight */
+        2px 2px 0 #000; /* Bottom and right outer shadow */
+}
+
+.window p{
+  color:#000000;
+}
+
+.window-header {
+  height: 20px;
+  padding: 2px;
+  background-color: #00007F;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  gap: 5px;
+  justify-content: left;
+  align-items: center;
+  cursor: move;
+  color: #FEFEFE;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.window-header button {
+  background-image: url("/assets/icons/exit_button.png");
+  margin-left: auto;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  width: 16px;
+  height:16px;
+}
+
+.window-content {
+  margin: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+  height: calc(100% - 20px); /* Subtract the header height */
+  background-color: #FEFEFE;
+  box-shadow: inset ;
+  overflow: auto;
+
+  box-shadow:
+        inset -1px -1px 0 #808080,
+        inset 1px 1px 0 #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ========Nav Bar ================================================================================================*/
+#nav_container {
   position: fixed;
   top: calc(0.02 * var(--main-height));
   right: 0;
@@ -228,27 +248,104 @@ p {
   background-repeat: no-repeat;
 }
 
-.home {
+.nav_home {
   aspect-ratio: 1/1.4;  
   background-image: url("../assets/icons/rat.png");
-  /* justify-self: flex-start;
-  margin-right: calc(0.7 * var(--main-width)); */
 }
+
 
 @media (max-width: 768px) {
-  .folders-container{
-    width: calc(0.7 * var(--main-width));
-    gap: calc(0.05 * var(--main-width));
+  #nav_container {
+    position: fixed;
+    top: calc(0.02 * var(--main-height));
+    right: 0;
+    padding-left: calc(0.02 * var(--main-width));
+    padding-right: calc(0.02 * var(--main-width));
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+    align-self: center;
+    gap: calc(0.03 * var(--main-width));
+    font-family: var(--font-family);
+    width: calc(0.25 * var(--main-width));
+    margin-right: calc(0.01 * var(--main-width));
+    z-index: 50;
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
   }
-  
-  .icon p{
-    font-size: 0.8rem;
-  }
+
 }
 
-/* Top Icons */
+/* ======== Nav Bar ================================================================================================*/
 
-.top_icons_container {
+
+
+
+
+/* ======== Home Screen ================================================================================================*/
+#home {
+  position: relative;
+  background-image: url('../assets/images/fish.jpg'); 
+  background-size: cover;
+  background-position: center;
+}
+
+
+.home-content {
+  min-height: var(--main-height); /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  
+  text-align: left;
+  backdrop-filter: blur(12px);
+  
+  font-family: var(--font-family);
+  padding-top: calc(0.05 * var(--main-height));
+  padding-bottom: calc(0.05 * var(--main-height));
+  padding-left: calc(0.05 * var(--main-width));
+  padding-right: calc(0.05 * var(--main-width));
+}
+
+.home-content h1 {
+  font-size: 5rem;
+  margin-top: calc(0.12 * var(--main-height));
+}
+
+.home-content h2 {
+  font-size: 2rem;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .home-content {
+    min-height: var(--main-height); /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: calc(0.02 * var(--main-height));
+  }
+
+  .home-content h1 {
+    font-size: 2rem;
+    margin-top: calc(0.2 * var(--main-height));
+  }
+  
+  .home-content p {
+    font-size: 1rem;
+  }
+
+}
+
+
+/* Home Icons */
+
+.home_icons {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -264,19 +361,19 @@ p {
 
 }
 
-.resume {
+#resume {
   aspect-ratio: 1/1.5;
   background-image: url("../assets/icons/notepad.png");
   font-size: 1rem;
 }
 
-.linkedin {
+#linkedin {
   aspect-ratio: 1/1.5;
   background-image: url("../assets/icons/linkedin.png");
   font-size: 1rem;
 }
 
-.github {
+#github {
   aspect-ratio: 1/1.5;
   background-image: url("../assets/icons/github.png");
   font-size: 1rem;
@@ -292,16 +389,14 @@ p {
   }
   
 }
+/* ======== Home Screen ================================================================================================*/
 
 
 
 
 
-
-
-/* ===== Projects ===== */
+/* ======== Projects ================================================================================================*/
 #projects {
-  min-height: var(--main-height);
   position: relative;
   background-image: linear-gradient(
     to top, 
@@ -339,23 +434,31 @@ p {
   color: #f4f4f4;
 }
 
-.projects-content h2{
-  font-size: 3rem;
-  text-decoration: underline;
-  color: #000000;
+
+
+/* Project Icons */
+
+#UVM_RISCV {
+  aspect-ratio: 1/1.5;
+  background-image: url("../assets/icons/uvm_proj_icon.webp");
+  font-size: 1rem;
+  margin-top: 3rem;
 }
 
-.projects-content p{
-  font-size: 1.5rem;
-  color: #000000;
-  line-height: 80%;
-}
 
 
 
-/* ===== Other ===== */
+/* ======== Projects ================================================================================================*/
+
+
+
+
+
+
+
+
+/* ======== Other ================================================================================================*/
 #other {
-  min-height: var(--main-height);
   position: relative;
   background-image: linear-gradient(
     to top, 
@@ -371,15 +474,18 @@ p {
   min-height: var(--main-height);
   backdrop-filter: blur(20px);
 }
+/* ======== Other ================================================================================================*/
 
 
 
 
 
 
-/* ===== About ===== */
+
+
+
+/* ======== About ================================================================================================*/
 #about {
-  min-height: var(--main-height);
   position: relative;
   background-image: linear-gradient(
     to top, 
@@ -495,3 +601,10 @@ p {
   width: calc(0.3 * var(--main-width));
   height: calc(0.3 * var(--main-width));
 }
+
+
+
+/* ======== About ================================================================================================*/
+
+
+
