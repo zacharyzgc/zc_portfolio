@@ -298,14 +298,93 @@ p {
 
 
 
-/* ===== About ===== */
-#about {
+
+/* ===== Projects ===== */
+#projects {
   min-height: var(--main-height);
   position: relative;
   background-image: linear-gradient(
     to top, 
     rgba(3, 3, 17, 0.651), 
     rgba(10, 28, 72, 0.541)
+), url('../assets/images/fish.jpg');
+  background-size: cover;
+  background-position: center;
+
+}
+
+
+.projects-content {
+  min-height: var(--main-height); /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  
+  text-align: left;
+  color: var(--text-light);
+  backdrop-filter: blur(20px);
+  
+  font-family: var(--font-family);
+  padding-top: calc(0.05 * var(--main-height));
+  padding-bottom: calc(0.05 * var(--main-height));
+  padding-left: calc(0.1 * var(--main-height));
+  padding-right: calc(0.05 * var(--main-height));
+}
+
+
+.projects-content h1{
+  font-size: 3rem;
+  text-decoration: underline;
+  color: #f4f4f4;
+}
+
+.projects-content h2{
+  font-size: 3rem;
+  text-decoration: underline;
+  color: #000000;
+}
+
+.projects-content p{
+  font-size: 1.5rem;
+  color: #000000;
+  line-height: 80%;
+}
+
+
+
+/* ===== Other ===== */
+#other {
+  min-height: var(--main-height);
+  position: relative;
+  background-image: linear-gradient(
+    to top, 
+    rgba(3, 3, 17, 0.822), 
+    rgba(3, 3, 17, 0.651)
+), url('../assets/images/fish.jpg');
+  background-size: cover;
+  background-position: center;
+
+}
+
+.other-content {
+  min-height: var(--main-height);
+  backdrop-filter: blur(20px);
+}
+
+
+
+
+
+
+/* ===== About ===== */
+#about {
+  min-height: var(--main-height);
+  position: relative;
+  background-image: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 0.918), 
+    rgba(3, 3, 17, 0.822)
 ), url('../assets/images/fish.jpg');
   background-size: cover;
   background-position: center;
@@ -415,77 +494,4 @@ p {
   padding-top: 5rem;
   width: calc(0.3 * var(--main-width));
   height: calc(0.3 * var(--main-width));
-}
-
-/* ===== Projects ===== */
-#projects {
-  min-height: var(--main-height);
-  position: relative;
-  background-image: linear-gradient(
-    to top, 
-    rgba(3, 3, 17, 0.822), 
-    rgba(3, 3, 17, 0.651)
-), url('../assets/images/fish.jpg');
-  background-size: cover;
-  background-position: center;
-
-}
-
-
-.projects-content {
-  min-height: var(--main-height); /* Full viewport height */
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: flex-start;
-  
-  text-align: left;
-  color: var(--text-light);
-  backdrop-filter: blur(20px);
-  
-  font-family: var(--font-family);
-  padding-top: calc(0.05 * var(--main-height));
-  padding-bottom: calc(0.05 * var(--main-height));
-  padding-left: calc(0.1 * var(--main-height));
-  padding-right: calc(0.05 * var(--main-height));
-}
-
-
-.projects-content h1{
-  font-size: 3rem;
-  text-decoration: underline;
-  color: #f4f4f4;
-}
-
-.projects-content h2{
-  font-size: 3rem;
-  text-decoration: underline;
-  color: #000000;
-}
-
-.projects-content p{
-  font-size: 1.5rem;
-  color: #000000;
-  line-height: 80%;
-}
-
-
-
-/* ===== Other ===== */
-#other {
-  min-height: var(--main-height);
-  position: relative;
-  background-image: linear-gradient(
-    to top, 
-    rgba(0, 0, 0, 0.918), 
-    rgba(3, 3, 17, 0.822)
-), url('../assets/images/fish.jpg');
-  background-size: cover;
-  background-position: center;
-
-}
-
-.other-content {
-  min-height: var(--main-height);
-  backdrop-filter: blur(20px);
 }
