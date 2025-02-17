@@ -23,35 +23,57 @@
 
 //window
 
-function toggleWindow() {
-  const window = document.getElementById("uvm_window");
-  if (window.style.display === "none" || window.style.display === "") {
-      window.style.display = "block";
-  } else {
-      window.style.display = "none";
-  }
-}
 
-// Make the window draggable
-const windowElement = document.getElementById("uvm_window");
-const header = windowElement.querySelector(".window-header");
+// Get all icons with the class "icon"
+const icons = document.querySelectorAll(".window_icon");
 
-let isDragging = false;
-let offsetX, offsetY;
+// Loop through each icon
+icons.forEach(icon => {
 
-header.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  offsetX = e.clientX - windowElement.getBoundingClientRect().left;
-  offsetY = e.clientY - windowElement.getBoundingClientRect().top;
-});
+    icon.addEventListener("click", (e) => {
 
-document.addEventListener("mousemove", (e) => {
-  if (isDragging) {
-      windowElement.style.left = `${e.clientX - offsetX}px`;
-      windowElement.style.top = `${e.clientY - offsetY}px`;
-  }
-});
+        // Get the window ID from the data-window attribute
+        const windowId = icon.getAttribute("window_id");
+        const window = document.getElementById(windowId);
+        const header = window.querySelector(".window-header");
+        const x_button = header.querySelector(".x_button");
+        
+        // Toggle the window's visibility
+        if (window.style.display === "none" || window.style.display === "") {
+            window.style.display = "flex";
+        } else {
+            window.style.display = "none";
+        }
 
-document.addEventListener("mouseup", () => {
-  isDragging = false;
+
+        //close window
+        x_button.addEventListener("click", (e) => {
+        window.style.display = "none";
+        });
+
+
+        //dragging
+        let isDragging = false;
+        let offsetX, offsetY;
+        
+        header.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            offsetX = e.clientX - window.getBoundingClientRect().left;
+            offsetY = e.clientY - window.getBoundingClientRect().top;
+        });
+        
+        document.addEventListener("mousemove", (e) => {
+            if (isDragging) {
+                window.style.left = `${e.clientX - offsetX}px`;
+                window.style.top = `${e.clientY - offsetY}px`;
+            }
+        });
+        
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+
+
+
+    });
 });

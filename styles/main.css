@@ -15,7 +15,7 @@
 /* ===== :root Variables ===== */
 :root {
   /* Colors */
-  --primary-color: #3498db;
+  --primary-color: #000000;
   --secondary-color: #2ecc71;
   --background-color: #f4f4f4;
   --text-color: #333;
@@ -142,15 +142,17 @@ p {
 /* ===== Windows Base ===== */
 
 .window {
+  flex-direction: column;
   display: none;
   position:fixed;
   top: 1rem;
-  left: calc(0.2 * var(--main-width));
-  width: calc(0.5 * var(--main-width));
-  height: calc(0.95 * var(--main-height));
+  left: calc(0.352 * var(--main-width));
+  width: calc(0.4 * var(--main-width));
+  height: calc(0.9 * var(--main-height));
   background-color: #C0C0C0;
   resize: both;
   overflow: hidden;
+  z-index: 50;
 
   box-shadow:
         inset -1px -1px 0 #fff, /* Top and left inner highlight */
@@ -162,6 +164,8 @@ p {
 .window p{
   color:#000000;
 }
+
+
 
 .window-header {
   height: 20px;
@@ -188,22 +192,65 @@ p {
   height:16px;
 }
 
+.window_toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color:#000;
+  margin-right:6px;
+  margin-left:6px;
+  font-size: 1rem;
+  height: 20px;
+  line-height: 90%;
+}
+
 .window-content {
+  margin: 1px;
+  overflow: scroll;
   margin: 4px;
+  margin-top: 0px;
   padding: 10px;
   box-sizing: border-box;
-  height: calc(100% - 20px); /* Subtract the header height */
+  height: calc(100% - 20px);
   background-color: #FEFEFE;
-  box-shadow: inset ;
-  overflow: auto;
+  overflow: scroll;
 
   box-shadow:
-        inset -1px -1px 0 #808080,
-        inset 1px 1px 0 #fff;
+         -1px -1px 0 #271e1e,
+         1px -1px 0 #271e1e,
+         1px 1px 0 #271e1e;
+}
+
+.window-content img{
+  width: 100%;
+  color:#000;
+  font-size: 1rem;
+  line-height: 90%;
 }
 
 
 
+/* Resume Window */
+#download_button{
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  color:#000;
+  width: 70px;
+}
+
+#download_button .button_text{
+  display: inline-block;
+  color:#000;
+  font-size: 16px;
+  margin: 0;
+}
+
+#download_button img{
+  display: inline-block;
+  height: 80%;
+  object-fit: contain;
+} 
 
 
 
@@ -216,18 +263,15 @@ p {
 #nav_container {
   position: fixed;
   top: calc(0.02 * var(--main-height));
-  right: 0;
-  padding-left: calc(0.02 * var(--main-width));
-  padding-right: calc(0.02 * var(--main-width));
+  right: calc(0.01 * var(--main-width));;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center; 
   gap: calc(0.03 * var(--main-width));
   font-family: var(--font-family);
-  width: calc(0.25 * var(--main-width));
-  margin-right: calc(0.01 * var(--main-width));
-  z-index: 50;
+  width: calc(0.2 * var(--main-width));
+  z-index: 30;
   transition: transform 0.3s ease-in-out; /* Smooth transition */
 }
 
@@ -270,7 +314,7 @@ p {
     font-family: var(--font-family);
     width: calc(0.25 * var(--main-width));
     margin-right: calc(0.01 * var(--main-width));
-    z-index: 50;
+    z-index: 30;
     transition: transform 0.3s ease-in-out; /* Smooth transition */
   }
 
@@ -379,6 +423,10 @@ p {
   font-size: 1rem;
 }
 
+
+
+
+
 @media (max-width: 768px) {
 
   .top_icons_container{
@@ -438,7 +486,7 @@ p {
 
 /* Project Icons */
 
-#UVM_RISCV {
+#UVM_RISCV_icon {
   aspect-ratio: 1/1.5;
   background-image: url("../assets/icons/uvm_proj_icon.webp");
   font-size: 1rem;

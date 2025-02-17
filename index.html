@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zachary Chen</title>
-    <link rel="stylesheet" href="reset.css">
+    <!-- <link rel="stylesheet" href="/styles/reset.css"> -->
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="icon" type="image/x-icon" href="assets/icons/logo.png">
 </head>
@@ -45,11 +45,33 @@
             <h1>ZACHARY CHEN</h1>
             <h2>a digital design engineer.</h2>
 
-            <div class="home_icons">
-                <a href="files/ZacharyChen.pdf" download="ZacharyChen.pdf" id="resume" class="icon" target=”_blank”>     
-                    <div class="icon_text">RESUME</div>
-                </a>
 
+            <!-- resume window -->
+            <div id="resume_window" class="window">
+                <div class="window-header">
+                    <img src="assets/icons/folder_closed.png" height = 15px>
+                    <span>RESUME.txt</span>
+                    <button class = "x_button" ></button>
+                </div>
+                <div class="window_toolbar">
+                    <a id="download_button" download target='blank' href="/files/ZacharyChen.pdf">
+                        <div class="button_text">Download</div>
+                        <img src="assets/icons/folder_open.png">
+                    </a>
+                </div>
+                <div class="window-content">
+                    <img src="assets/images/resume.png">
+                </div>
+            </div>
+
+
+            <!-- Home Icons -->
+            <div class="home_icons">
+
+                <div id ="resume" class="icon window_icon" window_id = "resume_window">
+                    <div class="icon_text">RESUME</div>
+                </div>
+                
                 <a href="https://www.linkedin.com/in/zacharyzgc/" id="linkedin" class="icon" target=”_blank”>     
                     <div class="icon_text">LINKEDIN</div>
                 </a>
@@ -73,7 +95,8 @@
         <div class="projects-content">
             <h1>PROJECTS</h1>
 
-            <div id ="UVM_RISCV" class="icon" onclick="toggleWindow()">
+            <!-- uvm_icon -->
+            <div id ="UVM_RISCV_icon" class="icon window_icon" window_id = "uvm_window">
                 <div class="icon_text">UVM_RISCV</div>
             </div>
 
@@ -81,13 +104,14 @@
             <div id="uvm_window" class="window">
                 <div class="window-header">
                     <img src="assets/icons/folder_closed.png" height = 15px>
-                    <span>UVM_RISCV</span>
-                    <button onclick="toggleWindow()"></button>
+                    <span>UVM_RISCV.txt</span>
+                    <button class = "x_button" ></button>
                 </div>
                 <div class="window-content">
                     <p>UVM RISCV Project description</p>
                 </div>
             </div>
+
 
         </div>
     </section>
