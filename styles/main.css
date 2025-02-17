@@ -152,8 +152,8 @@ p {
   display: none;
   position:fixed;
   top: 1rem;
-  left: calc(0.352 * var(--main-width));
-  width: calc(0.4 * var(--main-width));
+  left: calc(0.14 * var(--main-width));
+  width: calc(0.65 * var(--main-width));
   height: calc(0.9 * var(--main-height));
   background-color: #C0C0C0;
   resize: both;
